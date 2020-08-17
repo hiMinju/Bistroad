@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 import classNames from 'classnames/bind';
 import createMuiTheme from '@material-ui/styles/createStyles';
-
+import Api from '../Api.js';
 import styles from './SignUp.scss';
 
 const cx = classNames.bind(styles);
@@ -16,14 +16,32 @@ const btnTheme = createMuiTheme({
 });
 
 class Signup extends React.Component {
+	state = {
+		username: '',
+		password: '',
+		fullName: '',
+		phone: '',
+		role: ''
+	};
+
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	};
+
 	handleSubmit = (e) => {
 		e.preventDefault();
-
-		this.props.handleAccount({
-			email: e.target.email.value,
-			pwd: e.target.pwd.value,
-			nickname: e.target.nickname.value,
-			name: e.target.name.value
+		Api.get('/users', {
+			params: {
+				username: this.state.username,
+				password: this.state.password,
+				fullName: this.state.fullName,
+				phone: this.state.phone,
+				role: this.state.role
+			}
+		}).catch((error) => {
+			console.log('error : ', error.response);
 		});
 	};
 
@@ -41,7 +59,7 @@ class Signup extends React.Component {
 							</tr>
 							<tr>
 								<td colSpan="2" className={cx('td')}>
-									<input type="text" name="name" />
+									<input type="text" name="fullName" onChange={this.handleChange} />
 								</td>
 							</tr>
 							<tr>
@@ -51,7 +69,7 @@ class Signup extends React.Component {
 							</tr>
 							<tr className={cx('td')}>
 								<td>
-									<input type="password" name="nickname" />
+									<input type="text" name="username" onChange={this.handleChange} />
 								</td>
 								<td>
 									<button className={cx('button')}>중복확인</button>
@@ -64,7 +82,7 @@ class Signup extends React.Component {
 							</tr>
 							<tr>
 								<td colSpan="2" className={cx('td')}>
-									<input type="text" name="pwd" />
+									<input type="password" name="pwd" onChange={this.handleChange} />
 								</td>
 							</tr>
 							<tr>
@@ -74,7 +92,7 @@ class Signup extends React.Component {
 							</tr>
 							<tr>
 								<td colSpan="2" className={cx('td')}>
-									<input type="text" name="phone" />
+									<input type="text" name="phone" onChange={this.handleChange} />
 								</td>
 							</tr>
 							<tr>
@@ -84,10 +102,15 @@ class Signup extends React.Component {
 							</tr>
 							<tr className={cx('type')}>
 								<td>
-									<input type="radio" name="chk_info" value="customer" />손님
+									<input type="radio" name="role" value="ROLE_USER" onChange={this.handleChange} />손님
 								</td>
 								<td>
-									<input type="radio" name="chk_info" value="owner" />점주
+									<input
+										type="radio"
+										name="role"
+										value="ROLE_STORE_OWNER"
+										onChange={this.handleChange}
+									/>점주
 								</td>
 							</tr>
 							<tr>
