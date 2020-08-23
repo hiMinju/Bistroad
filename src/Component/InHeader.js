@@ -4,6 +4,8 @@ import Container from '@material-ui/core/Container';
 import Table from '@material-ui/core/Table';
 import classNames from 'classnames/bind';
 import logo from '../image/logo.png';
+import { Link } from 'react-router-dom';
+
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
@@ -31,7 +33,9 @@ const InHeader = () => (
 			</TableBody> */}
 		</Table>
 		<div>
-			<img src={logo} alt="Logo" height="70" />
+			<Link to="/home">
+				<img src={logo} alt="Logo" height="70" />
+			</Link>
 		</div>
 	</Container>
 );

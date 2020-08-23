@@ -32,16 +32,15 @@ class Signup extends React.Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		Api.get('/users', {
-			params: {
-				username: this.state.username,
-				password: this.state.password,
-				fullName: this.state.fullName,
-				phone: this.state.phone,
-				role: this.state.role
-			}
+
+		const response = Api.post('/users', {
+			username: this.state.username,
+			password: this.state.password,
+			fullName: this.state.fullName,
+			phone: this.state.phone,
+			role: this.state.role
 		}).catch((error) => {
-			console.log('error : ', error.response);
+			console.log('error : ', error);
 		});
 	};
 
@@ -49,7 +48,7 @@ class Signup extends React.Component {
 		return (
 			<div>
 				<h3>회원가입</h3>
-				<form onSubmit={this.handleSubmit} style={{ display: 'inline-block' }}>
+				<form type="submit" style={{ display: 'inline-block' }}>
 					<table className={cx('table')}>
 						<tbody>
 							<tr>
