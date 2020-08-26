@@ -81,7 +81,7 @@ class Signup extends React.Component {
 							</tr>
 							<tr>
 								<td colSpan="2" className={cx('td')}>
-									<input type="password" name="pwd" onChange={this.handleChange} />
+									<input type="password" name="password" onChange={this.handleChange} />
 								</td>
 							</tr>
 							<tr>
