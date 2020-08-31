@@ -4,6 +4,8 @@ import classNames from 'classnames/bind';
 import createMuiTheme from '@material-ui/styles/createStyles';
 import Api from '../Api.js';
 import styles from './SignUp.scss';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +18,11 @@ const btnTheme = createMuiTheme({
 });
 
 class SignIn extends React.Component {
+	store = createStore(
+		(state) => state,
+		{ loading: false, name: '예제' },
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+	);
 	state = {
 		id: '',
 		username: '',
@@ -47,6 +54,7 @@ class SignIn extends React.Component {
 	render() {
 		return (
 			<div>
+				<Provider store={this.store} />
 				<h3>로그인</h3>
 				<form onSubmit={this.handleSubmit} style={{ display: 'inline-block' }}>
 					<table className={cx('table')}>
