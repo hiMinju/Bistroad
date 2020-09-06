@@ -6,19 +6,24 @@ import { Link, Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import Home from './Home';
 import signUp from './SignUp';
 import signIn from './SignIn';
+import Store from './Store';
+import main from './main';
+
 class Body extends Component {
 	render() {
 		return (
-			<Container maxWidth="15sm">
+			<div>
 				<Typography component="div" align="center" style={{ height: '100vh' }}>
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route path="/signUp" component={signUp} />
 						<Route path="/signIn" component={signIn} />
 						<Route path="/home" component={Home} />
+						<Route path="/store" component={Store} />
+						<Route path="/main" component={main} />
 					</Switch>
 				</Typography>
-			</Container>
+			</div>
 		);
 	}
 }
