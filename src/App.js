@@ -1,34 +1,3 @@
-// import React, { Component, PureComponent } from 'react';
-// import { render } from 'react-dom';
-// import { Link, Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-// import { Provider } from 'react-redux';
-
-// import { BeforeHeader, AfterHeader } from './component/Header';
-// import InHeader from './component/InHeader';
-// import Footer from './component/Footer';
-// import Body from './component/Body';
-// import configureStore from './configureStore';
-
-// class App extends PureComponent {
-// 	store = configureStore();
-
-// 	render() {
-// 		return (
-// 			<Provider store={this.store}>
-// 				<Router>
-// 					<main>
-// 						<Body />
-
-// 						<Footer />
-// 					</main>
-// 				</Router>
-// 			</Provider>
-// 		);
-// 	}
-// }
-
-// export default App;
-
 import React, { useState, useEffect } from 'react';
 import { Link, Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 
@@ -42,9 +11,11 @@ import LogoutButton from './component/LogoutButton';
 import SignUp from './component/SignUp';
 import Footer from './component/Footer';
 import Store from './component/Store';
+import StoreList from './component/StoreList';
 
 import classNames from 'classnames/bind';
 import styles from './component/Header.scss';
+import { ClickAwayListener } from '@material-ui/core';
 
 const cx = classNames.bind(styles);
 
@@ -52,7 +23,13 @@ function App() {
 	const [ user, setUser ] = useState(null);
 	const authenticated = user != null;
 
-	const login = ({ username, password }) => setUser(signIn({ username, password }));
+	// const login = ({ username, password }) => setUser(signIn({ username, password })); // async 함수 사용
+	function login({ username, password }) {
+		signIn({ username, password }).then((user) => {
+			setUser(user);
+		});
+	}
+
 	const logout = () => setUser(null);
 
 	return (
@@ -88,7 +65,7 @@ function App() {
 						render={(props) => <LoginForm authenticated={authenticated} login={login} {...props} />}
 					/>
 					<Route path="/signUp" component={SignUp} />
-					<Route path="/store" component={Store} />
+					<Route path="/store/:storeId" component={Store} />
 					<AuthRoute
 						authenticated={authenticated}
 						path="/profile"

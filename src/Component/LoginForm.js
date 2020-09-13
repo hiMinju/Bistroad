@@ -58,14 +58,7 @@ function LoginForm({ authenticated, login, location }) {
 						name="password"
 						onChange={({ target: { value } }) => setPassword(value)}
 					/>
-					<Button
-						onClick={handleClick}
-						type="submit"
-						theme={btnTheme}
-						fontSize="1rem"
-						color="primary"
-						variant="outlined"
-					>
+					<Button onClick={handleClick} theme={btnTheme} fontSize="1rem" color="primary" variant="outlined">
 						로그인
 					</Button>
 				</form>

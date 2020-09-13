@@ -26,6 +26,8 @@ export async function signIn({ username, password }) {
 
 			user = result.data;
 		} catch (error) {
+			alert('비밀번호가 잘못 입력되었습니다!');
+
 			console.log('error: ' + error);
 		}
 
