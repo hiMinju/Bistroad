@@ -1,0 +1,71 @@
+.menu {
+	background-color: white;
+	width: 40%;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	margin-bottom: 50px;
+	text-overflow: ellipsis;
+	padding: 0 20px;
+	box-shadow: 0 8px 38px rgba(133, 133, 133, 0.3), 0 5px 12px rgba(133, 133, 133, 0.22);
+}
+
+.menuImage {
+	display: inline;
+	max-width: 175%;
+	position: relative;
+	top: 15px;
+	box-shadow: -10px 19px 39px rgba(83, 83, 83, 0.3), 10px 15px 12px rgba(80, 80, 80, 0.22);
+}
+
+.menu_column {
+	width: 30%;
+	box-sizing: border-box;
+	text-overflow: ellipsis;
+}
+
+.menu_column:last-child {
+	padding: 20px 0;
+	width: 40%;
+}
+
+.menu .menu_description {
+	text-overflow: ellipsis;
+	color: #b4b5bd;
+	overflow: hidden;
+	text-align: left;
+}
+
+.menu h1 {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.menu .menu_price {
+	margin-right: 10px;
+	color: #b4b5bd;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: flex;
+}
+@media screen and (min-width: 320px) and (max-width: 667px) {
+	.menu {
+		width: 100%;
+	}
+}
+
+@media screen and (min-width: 320px) and (max-width: 667px) and (orientation: portrait) {
+	.menu {
+		width: 100%;
+		flex-direction: column;
+	}
+	.menuImage {
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+	.menu_column {
+		width: 100% !important;
+	}
+}
