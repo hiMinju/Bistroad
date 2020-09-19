@@ -11,6 +11,7 @@ import LogoutButton from './component/LogoutButton';
 import SignUp from './component/SignUp';
 import Footer from './component/Footer';
 import Store from './component/Store';
+import Review from './component/Review';
 import StoreList from './component/StoreList';
 
 import classNames from 'classnames/bind';
@@ -57,7 +58,7 @@ function App() {
 					) : null}
 				</ul>
 			</header>
-			<main style={{ height: '100vh' }}>
+			<body style={{ height: '100vh' }}>
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route
@@ -66,14 +67,15 @@ function App() {
 					/>
 					<Route path="/signUp" component={SignUp} />
 					<Route path="/store/:storeId" component={Store} />
+					<Route path="/item/:storeId/:itemId" component={Review} />
 					<AuthRoute
 						authenticated={authenticated}
 						path="/profile"
 						render={(props) => <Profile user={user} {...props} />}
 					/>
 				</Switch>
-			</main>
-			<Footer />
+				<footer>©Yaneodoo</footer>
+			</body>
 		</Router>
 	);
 }

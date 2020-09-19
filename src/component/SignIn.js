@@ -18,8 +18,7 @@ const cx = classNames.bind(styles);
 const btnTheme = createMuiTheme({
 	maxWidth: '10px',
 	maxHeight: '10px',
-	minWidth: '10px',
-	minHeight: '10px',
+	height: '100%',
 	palette: { primary: '#FCBFB7' }
 });
 
@@ -80,14 +79,15 @@ class SignIn extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div style={{ height: '100%' }}>
 				<BeforeHeader />
 				<InHeader />
 				<div
 					style={{
 						display: 'flex',
 						justifyContent: 'center',
-						alignItems: 'center'
+						alignItems: 'center',
+						height: '100%'
 					}}
 				>
 					<form onSubmit={this.handleSubmit} style={{ display: 'flex', flexDirection: 'column' }}>

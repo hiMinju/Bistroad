@@ -32,7 +32,7 @@ function LoginForm({ authenticated, login, location }) {
 	if (authenticated) return <Redirect to={from} />;
 
 	return (
-		<div>
+		<div style={{ height: '100%' }}>
 			<InHeader />
 			<div
 				style={{

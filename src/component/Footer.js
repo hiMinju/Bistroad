@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = () => (
-	<div
+	<Footer
 		style={{
 			padding: '10px',
 			borderTop: '1px solid #d9d9d9',
@@ -12,7 +12,7 @@ const Footer = () => (
 		}}
 	>
 		©Yaneodoo
-	</div>
+	</Footer>
 );
 
 export default Footer;

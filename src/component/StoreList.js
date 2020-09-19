@@ -2,10 +2,24 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/Store.css';
 import LinesEllipsis from 'react-lines-ellipsis';
+import { Link, useHistory } from 'react-router-dom';
+
+// handleClick = (e) => {
+// 	// alert(id);
+// 	console.log(id);
+// 	review();
+// };
 
 function StoreList({ id, storeId, name, description, price, photoUri, stars }) {
+	const history = useHistory();
+
+	const review = (storeId, id) => {
+		console.log(id);
+		let path = '/item/' + storeId + '/' + id;
+		history.push(path);
+	};
 	return (
-		<div className="menu">
+		<div onClick={() => review(storeId, id)} className="menu">
 			<div className="menu_column">
 				<MenuImage image={photoUri} />
 			</div>

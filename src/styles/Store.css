@@ -7,12 +7,13 @@
 	flex-wrap: wrap;
 	margin-bottom: 50px;
 	text-overflow: ellipsis;
-	padding: 0 20px;
+	padding: 0 10px;
 	box-shadow: 0 8px 38px rgba(133, 133, 133, 0.3), 0 5px 12px rgba(133, 133, 133, 0.22);
+	cursor: pointer;
 }
 
 .menuImage {
-	display: inline;
+	display: flex;
 	max-width: 175%;
 	position: relative;
 	top: 15px;

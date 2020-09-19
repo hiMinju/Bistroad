@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import { Button } from '@material-ui/core';
 import classNames from 'classnames/bind';
 import createMuiTheme from '@material-ui/styles/createStyles';
