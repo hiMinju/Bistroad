@@ -11,10 +11,11 @@ const handleClick = (e) => {
 function StoreInfo({ id, name, description, phone, location }) {
 	return (
 		<div className="store">
-			<h1 style={{ display: 'flex' }}>{name}</h1>
-			<h4 style={{ display: 'flex' }}>
+			<h1 style={{ display: 'flex', textAlign: 'center' }}>{name}</h1>
+			{/* <h4 style={{ display: 'flex' }}>
 				{location.lat} {location.lng}
-			</h4>
+			</h4> */}
+			<h4 style={{ display: 'flex', textAlign: 'center' }}>서울시 강남구 남부순환로 2942</h4>
 		</div>
 		// <div onClick={handleClick} className="menu">
 		// 	<div className="menu_column">

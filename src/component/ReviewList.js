@@ -22,8 +22,8 @@ function ReviewList({ writerId, orderId, contents, stars, photoUri }) {
 		history.push(path);
 	};
 
-	const _callUserApi = async () => {
-		Api.get('/users/' + writerId).then((resp) => resp.data.fullName).catch((err) => console.log(err));
+	const _callUserApi = () => {
+		return Api.get('/users/' + writerId).then((resp) => resp.data.fullName).catch((err) => console.log(err));
 	};
 
 	const _getUserInfo = async () => {
@@ -34,10 +34,11 @@ function ReviewList({ writerId, orderId, contents, stars, photoUri }) {
 
 	const renderUser = () => {
 		_getUserInfo().then((user) => {
-			console.log('user: ' + user);
 			setUser(user);
+			console.log('user: ' + user);
+
+			return <div>{user}</div>;
 		});
-		return <div>{user}</div>;
 	};
 
 	return (
@@ -49,7 +50,7 @@ function ReviewList({ writerId, orderId, contents, stars, photoUri }) {
 			<div className="menu_column">
 				<h1>
 					{// 데이터가 없다면 'Loading'을 띄우고, 있으면 menu list가 보이도록 한다.
-					user === null ? renderUser() : 'username'}
+					user === null ? renderUser() : user}
 				</h1>
 				<div className="menu_description">
 					<LinesEllipsis text={contents} maxLine="3" ellipsis="..." trimRight basedOn="letters" />
