@@ -21,10 +21,10 @@ class Profile extends Component {
 		const { fullName, username, id, role, phone } = this.props.user;
 
 		return (
-			<div>
+			<div style={{ minHeight: '700px' }}>
 				<h1 style={{ marginLeft: '2px' }}>마이페이지</h1>
 				<div style={{ marginLeft: '3rem' }}>
-					<dt>fullName</dt>
+					<dt>이름</dt>
 					<dd>
 						{fullName} {role === 'ROLE_STORE_OWNER' ? '점주님' : '손님'}
 					</dd>

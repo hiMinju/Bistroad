@@ -17,7 +17,7 @@ class Review extends Component {
 			return (
 				<ReviewList
 					orderId={review.orderId}
-					writerId={review.writerId}
+					writer={review.writer}
 					contents={review.contents}
 					stars={review.stars}
 					key={review.orderId}
@@ -73,10 +73,10 @@ class Review extends Component {
 		const { reviews, storeInfo } = this.state;
 
 		return (
-			<div>
+			<div style={{ minHeight: '600px', margin: '0 20px' }}>
 				<div>{storeInfo ? this._renderStore() : 'Loading Store'}</div>
 
-				<div>review</div>
+				<div style={{ fontSize: '1.5rem', marginBottom: '5px' }}>리뷰</div>
 				<div>
 					{// 데이터가 없다면 'Loading'을 띄우고, 있으면 menu list가 보이도록 한다.
 					reviews ? this._renderReview() : 'Loading'}

@@ -11,7 +11,7 @@ import Api from '../Api';
 // 	review();
 // };
 
-function ReviewList({ writerId, orderId, contents, stars, photoUri }) {
+function ReviewList({ writer, orderId, contents, stars, photoUri }) {
 	const history = useHistory();
 
 	const [ user, setUser ] = useState(null);
@@ -22,24 +22,24 @@ function ReviewList({ writerId, orderId, contents, stars, photoUri }) {
 		history.push(path);
 	};
 
-	const _callUserApi = () => {
-		return Api.get('/users/' + writerId).then((resp) => resp.data.fullName).catch((err) => console.log(err));
-	};
+	// const _callUserApi = () => {
+	// 	return Api.get('/users/' + writerId).then((resp) => resp.data.fullName).catch((err) => console.log(err));
+	// };
 
-	const _getUserInfo = async () => {
-		const userInfo = await _callUserApi();
-		console.log(userInfo);
-		return userInfo;
-	};
+	// const _getUserInfo = async () => {
+	// 	const userInfo = await _callUserApi();
+	// 	console.log(userInfo);
+	// 	return userInfo;
+	// };
 
-	const renderUser = () => {
-		_getUserInfo().then((user) => {
-			setUser(user);
-			console.log('user: ' + user);
+	// const renderUser = () => {
+	// 	_getUserInfo().then((user) => {
+	// 		setUser(user);
+	// 		console.log('user: ' + user);
 
-			return <div>{user}</div>;
-		});
-	};
+	// 		return <div>{user}</div>;
+	// 	});
+	// };
 
 	return (
 		<div className="menu">
@@ -47,15 +47,16 @@ function ReviewList({ writerId, orderId, contents, stars, photoUri }) {
 				<ReviewImage image={photoUri} />
 			</div>
 
-			<div className="menu_column">
+			<div style={{ padding: '0px 20px' }}>
 				<h1>
-					{// 데이터가 없다면 'Loading'을 띄우고, 있으면 menu list가 보이도록 한다.
-					user === null ? renderUser() : user}
+					{/* {// 데이터가 없다면 'Loading'을 띄우고, 있으면 menu list가 보이도록 한다.
+					user === null ? renderUser() : user} */}
+					{writer.username}
 				</h1>
 				<div className="menu_description">
 					<LinesEllipsis text={contents} maxLine="3" ellipsis="..." trimRight basedOn="letters" />
 				</div>
-				<div className="menu_star">{stars}</div>
+				<div className="menu_star">평점: {stars}</div>
 			</div>
 		</div>
 	);
@@ -68,6 +69,7 @@ function ReviewImage({ photoUri }) {
 			src="https://search.pstatic.net/common/?autoRotate=true&quality=95&type=w750&src=http%3A%2F%2Fldb.phinf.naver.net%2F20200416_191%2F1587005465013afNYI_JPEG%2F%25BE%25F7%25C3%25BC%25C0%25DA%25C3%25BC_20200416_327581_%25B7%25B9%25B5%25E5175-%25B4%25EB%25C4%25A1%25BF%25AA%25C1%25A1_175%25B6%25B1%25BA%25BA%25C0%25CC_1080x640.jpg"
 			alt="음식 이미지"
 			className="menuImage"
+			style={{ maxWidth: '100%' }}
 		/>
 	);
 }

@@ -18,6 +18,7 @@ function StoreList({ id, storeId, name, description, price, photoUri, stars }) {
 		let path = '/item/' + storeId + '/' + id;
 		history.push(path);
 	};
+	console.log(description);
 	return (
 		<div onClick={() => review(storeId, id)} className="menu">
 			<div className="menu_column">
@@ -27,7 +28,8 @@ function StoreList({ id, storeId, name, description, price, photoUri, stars }) {
 			<div className="menu_column">
 				<h1>{name}</h1>
 				<div className="menu_description">
-					<LinesEllipsis text={description} maxLine="3" ellipsis="..." trimRight basedOn="letters" />
+					{/* <LinesEllipsis text={description} maxLine="3" ellipsis="..." trimRight basedOn="letters" /> */}
+					{description}
 				</div>
 				<div className="menu_price">{price}</div>
 				<div className="menu_star">{stars}</div>

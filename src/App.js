@@ -58,7 +58,7 @@ function App() {
 					) : null}
 				</ul>
 			</header>
-			<body style={{ height: '100vh' }}>
+			<div>
 				<Switch>
 					<Route exact path="/" component={Home} />
 					<Route
@@ -74,8 +74,22 @@ function App() {
 						render={(props) => <Profile user={user} {...props} />}
 					/>
 				</Switch>
-				<footer>©Yaneodoo</footer>
-			</body>
+			</div>
+			<footer
+				style={{
+					height: '2px',
+					minHeight: '1%',
+					bottom: '0',
+					padding: '10px',
+					borderTop: '1px solid #d9d9d9',
+					fontSize: '12px',
+					backgroundColor: '#f1f1f1',
+					textAlign: 'center',
+					color: '#888'
+				}}
+			>
+				©Yaneodoo
+			</footer>
 		</Router>
 	);
 }
